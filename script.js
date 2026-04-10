@@ -4,6 +4,7 @@ import storybookWinSceneUrl from "./storybook-win-scene.png";
 const PASSWORD = "7609";
 const MAX_DIGITS = 4;
 const RESET_DELAY_MS = 900;
+const WIN_SCENE_DELAY_MS = 500;
 
 const slots = Array.from(document.querySelectorAll("[data-slot]"));
 const keypad = document.querySelector(".keypad-grid");
@@ -77,12 +78,17 @@ function flashError() {
 
 function unlockCastle() {
   isUnlocked = true;
-  document.body.classList.add("unlocked");
-  setScene("win");
   renderSlots("success");
-  setStatus("Thành công! Cánh cửa đã mở, Cinderella đã được cứu.");
-  winBanner.setAttribute("aria-hidden", "false");
-  sparkleBurst.setAttribute("aria-hidden", "false");
+  setStatus("Chính xác! Chờ một chút, Cinderella đang được giải cứu.");
+  setLockedState(true);
+
+  window.setTimeout(() => {
+    document.body.classList.add("unlocked");
+    setScene("win");
+    setStatus("Thành công! Cánh cửa đã mở, Cinderella đã được cứu.");
+    winBanner.setAttribute("aria-hidden", "false");
+    sparkleBurst.setAttribute("aria-hidden", "false");
+  }, WIN_SCENE_DELAY_MS);
 }
 
 function checkPassword() {
