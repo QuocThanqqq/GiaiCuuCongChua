@@ -1,5 +1,5 @@
-import storybookSceneUrl from "./storybook-scene.png";
-import storybookWinSceneUrl from "./storybook-win-scene.png";
+const storybookSceneUrl = "./storybook-scene.png";
+const storybookWinSceneUrl = "./storybook-win-scene.png";
 
 const PASSWORD = "7609";
 const MAX_DIGITS = 4;
